@@ -37,9 +37,7 @@ jobs:
         id: get_repo_owner
         run: echo ::set-output name=repo_owner::$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')
       - name: Build Python Function
-        run: >
-          OWNER="${{ steps.get_repo_owner.outputs.repo_owner }}""
-          TAG="latest"
-          faas-cli publish
-          --extra-tag ${{ github.sha }}
-          --platforms linux/amd64,linux/arm/v7,linux/arm64
+        run: |
+          export OWNER="${{ steps.get_repo_owner.outputs.repo_owner }}""
+          export TAG="latest"
+          faas-cli publish --extra-tag ${{ github.sha }} --platforms linux/amd64,linux/arm/v7,linux/arm64
