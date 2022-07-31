@@ -3,5 +3,5 @@ def handle(req):
     Args:
         req (str): request body
     """
-
+    print("req", req)
     return req
