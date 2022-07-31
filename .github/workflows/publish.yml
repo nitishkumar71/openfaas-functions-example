@@ -40,4 +40,4 @@ jobs:
         run: |
           export OWNER="${{ steps.get_repo_owner.outputs.repo_owner }}"
           export TAG="latest"
-          faas-cli publish --extra-tag ${{ github.sha }} --platforms linux/amd64,linux/arm/v7,linux/arm64
+          faas-cli publish -f ./hello-python.yml --extra-tag ${{ github.sha }} --platforms linux/amd64,linux/arm/v7,linux/arm64
